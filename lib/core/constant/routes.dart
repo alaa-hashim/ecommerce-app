@@ -10,6 +10,6 @@ class AppRoute {
   static const String bottomNavigationBar = "/bottomNavigationBar";
   static const String homepage = "/homepage";
   static const String items = "/items";
-  static const String productdetails = "/productdetails";
+  static const String productdetail = "/productdetail";
   static const String subcategory = "/subcategory";
 }

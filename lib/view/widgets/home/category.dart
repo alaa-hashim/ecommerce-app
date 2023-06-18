@@ -55,7 +55,7 @@ class Categories extends GetView<HomeControllermpl> {
               children: [
                 Container(
                   height: 70,
-                  width: 75,
+                  width: 100,
                   decoration: BoxDecoration(
                       color: AppColor.white,
                       image: DecorationImage(

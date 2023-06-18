@@ -9,7 +9,7 @@ import '../core/constant/routes.dart';
 abstract class HomeController extends GetxController {
   void inialData();
   Future<void> getData();
-  void goTosub(List category, int selectedCat, String categoryid);
+  void goTosub(List category, int selectedCat, String categoryId);
 }
 
 class HomeControllermpl extends HomeController {
@@ -43,7 +43,7 @@ class HomeControllermpl extends HomeController {
     if (statusrequst == StatusRequst.success) {
       if (response['status'] == "success") {
         category.addAll(response['categories']);
-        subcategory.addAll(response['subcategory']);
+        // subcategory.addAll(response['subcategory']);
         product.addAll(response['product']);
       } else {
         statusrequst = StatusRequst.failure;
@@ -53,11 +53,11 @@ class HomeControllermpl extends HomeController {
   }
 
   @override
-  void goTosub(category, selectedCat, categoryid) {
+  void goTosub(category, selectedCat, categoryId) {
     Get.offNamed(AppRoute.subcategory, arguments: {
       "category": category,
       "selectedCat": selectedCat,
-      "categoryid": categoryid
+      "categoryId": categoryId,
     });
   }
 }

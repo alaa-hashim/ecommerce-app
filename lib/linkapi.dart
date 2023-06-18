@@ -9,5 +9,9 @@ class AppLink {
   static const String verfiycode = 'http://192.168.1.10/alaa/auth/signup.php';
   // Home//
   static const String homepage = 'http://192.168.70.174/ecommerce/home.php';
-  static const String items = 'http://192.168.1.10/product/items.php';
+  //subcategories//
+  static const String subcategories =
+      'http://192.168.70.174/ecommerce/subcategory/subcategory.php';
+  static const String items =
+      'http://192.168.70.174/ecommerce/product/items.php';
 }

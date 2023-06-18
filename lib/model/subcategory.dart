@@ -1,4 +1,4 @@
-class Subcategory {
+class Subcategories {
   String? subId;
   String? subcatName;
   String? subcatNamear;
@@ -12,7 +12,7 @@ class Subcategory {
 
   String? date;
 
-  Subcategory(
+  Subcategories(
       {this.subId,
       this.subcatName,
       this.subcatNamear,
@@ -25,7 +25,7 @@ class Subcategory {
       this.img,
       this.date});
 
-  Subcategory.fromJson(Map<String, dynamic> json) {
+  Subcategories.fromJson(Map<String, dynamic> json) {
     subId = json['sub_id']?.toString();
     subcatName = json['subcat_name'];
     subcatNamear = json['subcat_namear'];

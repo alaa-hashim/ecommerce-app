@@ -12,7 +12,9 @@ class MyWidget extends GetView<SubcatControllerImp> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(color: AppColor.bg),
-      height: 90,
+      height: 120,
+      alignment: Alignment.center,
+      width: double.infinity,
       child: GridView.builder(
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
@@ -21,7 +23,7 @@ class MyWidget extends GetView<SubcatControllerImp> {
             crossAxisCount: 1,
             crossAxisSpacing: 0.10,
             mainAxisSpacing: 0.10,
-            childAspectRatio: 1.35,
+            childAspectRatio: 1.45,
           ),
           itemCount: controller.category.length,
           itemBuilder: (context, i) {
@@ -44,7 +46,7 @@ class Categories extends GetView<SubcatControllerImp> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        controller.changeCat(i!);
+        controller.changeCat(i!, category.categoryId);
       },
       child: Center(
         child: GetBuilder<SubcatControllerImp>(
@@ -54,14 +56,12 @@ class Categories extends GetView<SubcatControllerImp> {
               Center(
                 child: Center(
                   child: Container(
-                    height: 45,
-                    width: 70,
+                    height: 40,
                     decoration: controller.selectedCat == i
                         ? const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(08)),
                             color: AppColor.primaryColor,
-                            border: Border(
-                                bottom: BorderSide(
-                                    color: AppColor.primaryColor, width: 3)))
+                          )
                         : null,
                     child: Center(
                       child: Padding(
@@ -69,7 +69,7 @@ class Categories extends GetView<SubcatControllerImp> {
                         child: Text(
                           "${category.categoryName}",
                           style: const TextStyle(
-                              fontSize: 13, color: AppColor.black),
+                              fontSize: 14, color: AppColor.black),
                         ),
                       ),
                     ),

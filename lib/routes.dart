@@ -15,6 +15,8 @@
 //import 'package:tech_app/view/screen/subcategory.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:tech_app/view/screens/home.dart';
+import 'package:tech_app/view/screens/product/productdetail.dart';
+import 'package:tech_app/view/screens/product/productscreen.dart';
 import 'package:tech_app/view/screens/subcategory.dart';
 
 import 'core/constant/routes.dart';
@@ -52,14 +54,14 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoute.homepage,
     page: () => const Home(),
   ),
-  // GetPage(
-  // name: AppRoute.items,
-  //page: () => const Items(),
-  //),
-  //GetPage(
-  //name: AppRoute.productdetails,
-  //page: () => const Productdetils(),
-  //),
+  GetPage(
+    name: AppRoute.items,
+    page: () => const Productscreen(),
+  ),
+  GetPage(
+    name: AppRoute.productdetail,
+    page: () => const Productdetial(),
+  ),
   GetPage(
     name: AppRoute.subcategory,
     page: () => const Subcategory(),
