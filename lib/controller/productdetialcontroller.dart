@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import '../model/product.dart';
 
 abstract class ProductDetailcontroller extends GetxController {
-  late Product product;
+  late Product prodUct;
   intialData() {
-    product = Get.arguments['product'];
+    prodUct = Get.arguments['product'];
   }
 }
 

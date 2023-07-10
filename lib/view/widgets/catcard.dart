@@ -55,7 +55,7 @@ class Categories extends GetView<SubcatControllerImp> {
             children: [
               Center(
                 child: Center(
-                  child: Container(
+                  child: AnimatedContainer(
                     height: 40,
                     decoration: controller.selectedCat == i
                         ? const BoxDecoration(
@@ -63,6 +63,7 @@ class Categories extends GetView<SubcatControllerImp> {
                             color: AppColor.primaryColor,
                           )
                         : null,
+                    duration: const Duration(seconds: 1),
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

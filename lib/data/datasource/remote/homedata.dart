@@ -7,8 +7,8 @@ class Homedata {
   Homedata(
     this.apihandler,
   );
-  postData() async {
-    var respone = await apihandler.postData(AppLink.homepage, {});
+  postData(String st) async {
+    var respone = await apihandler.postData(AppLink.homepage, {"st": st});
     return respone.fold((l) => l, (r) => r);
   }
 }

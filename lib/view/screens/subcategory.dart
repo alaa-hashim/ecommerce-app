@@ -1,10 +1,14 @@
 // ignore_for_file: unused_local_variable
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:tech_app/core/class/handlindatview.dart';
+import 'package:tech_app/linkapi.dart';
 
 import '../../controller/subcategorycontroller.dart';
+import '../../core/constant/imageasset.dart';
 import '../../model/subcategory.dart';
 import '../widgets/catcard.dart';
 
@@ -18,7 +22,7 @@ class Subcategory extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                controller.goBack();
               },
               icon: const Icon(Icons.arrow_back_ios)),
         ),
@@ -33,7 +37,7 @@ class Subcategory extends StatelessWidget {
                       widget: InkWell(
                         onTap: () {},
                         child: SizedBox(
-                          height: 100,
+                          height: 135,
                           width: double.infinity,
                           child: GridView.builder(
                               scrollDirection: Axis.horizontal,
@@ -72,16 +76,24 @@ class Subcat extends GetView<SubcatControllerImp> {
         controller.goTproduct(controller.category, i!, subcategories.subId!);
       },
       child: SizedBox(
-        height: 100,
+        height: 120,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Card(
-              child: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(subcategories.image!))),
-              ),
+              child: subcategories.image!.isNotEmpty
+                  ? Container(
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            "${AppLink.imagestSubategories} /${subcategories.image!}",
+                      ),
+                    )
+                  : Center(
+                      child: Lottie.asset(
+                      AppImageAsset.noImage,
+                      width: 100,
+                      height: 100,
+                    )),
             ),
             Text(subcategories.subcatName!)
           ],

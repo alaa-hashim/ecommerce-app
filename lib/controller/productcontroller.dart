@@ -5,18 +5,21 @@ import 'package:tech_app/model/product.dart';
 
 import '../core/class/handledata.dart';
 import '../core/class/satusrequst.dart';
+import '../core/constant/routes.dart';
 import '../data/datasource/remote/items.dart';
 
 abstract class ProductController extends GetxController {
   intialData();
   changeCat(int val, String catval);
   getItems(String categoryid);
-  goToPageProductDetails(Product product);
+  goToPageProductDetails(Product prodUct);
+  goBack();
 }
 
 class ProductControllerImp extends ProductController {
-  List categories = [];
+  // List categories = [];
   String? categoryId;
+  late String st;
   int? selectedCat;
 
   ItemsData testData = ItemsData(Get.find());
@@ -31,6 +34,7 @@ class ProductControllerImp extends ProductController {
   void onInit() {
     // search = TextEditingController();
     intialData();
+    st = '2';
     super.onInit();
   }
 
@@ -54,7 +58,9 @@ class ProductControllerImp extends ProductController {
   getItems(categoryId) async {
     data.clear();
     statusrequst = StatusRequst.loading;
-    var response = await testData.getData(categoryId);
+    var response = await testData.getData(
+      categoryId,
+    );
     print("=============================== Controller $response ");
     statusrequst = handlingData(response);
     if (StatusRequst.success == statusrequst) {
@@ -70,11 +76,15 @@ class ProductControllerImp extends ProductController {
   }
 
   @override
-  goToPageProductDetails(product) {
-    Get.toNamed("productdetail", arguments: {"product": Product});
+  goToPageProductDetails(prodUct) {
+    Get.toNamed("productdetail", arguments: {"product": prodUct});
+  }
+
+  @override
+  goBack() {
+    Get.offNamed(AppRoute.subcategory);
   }
 }
-
 
 
 

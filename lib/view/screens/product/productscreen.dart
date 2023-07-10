@@ -9,12 +9,20 @@ import '../../../model/product.dart';
 import '../../widgets/customproduct.dart';
 
 class Productscreen extends StatelessWidget {
-  const Productscreen({super.key});
+  const Productscreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     ProductControllerImp controller = Get.put(ProductControllerImp());
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.abc),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+      ),
       body: Container(
         child: ListView(children: [
           InkWell(

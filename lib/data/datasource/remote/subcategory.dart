@@ -5,8 +5,9 @@ import '../../../core/class/apihandler.dart';
 class SubData {
   ApiHandler apihandler;
   SubData(this.apihandler);
-  getData(String id) async {
-    var respone = await apihandler.postData(AppLink.subcategories, {"id": id});
+  getData(String id, String st) async {
+    var respone =
+        await apihandler.postData(AppLink.homepage, {"id": id, "st": st});
     return respone.fold((l) => l, (r) => r);
   }
 }

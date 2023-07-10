@@ -14,18 +14,24 @@
 //import 'package:tech_app/view/screen/productdetils.dart';
 //import 'package:tech_app/view/screen/subcategory.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:tech_app/view/screens/auth/login.dart';
+import 'package:tech_app/view/screens/auth/signup.dart';
 import 'package:tech_app/view/screens/home.dart';
+import 'package:tech_app/view/screens/lang.dart';
+import 'package:tech_app/view/screens/onboarding.dart';
 import 'package:tech_app/view/screens/product/productdetail.dart';
 import 'package:tech_app/view/screens/product/productscreen.dart';
 import 'package:tech_app/view/screens/subcategory.dart';
+import 'package:tech_app/view/widgets/navbar.dart';
 
 import 'core/constant/routes.dart';
+import 'core/functions/bottomnavbinding.dart';
 import 'core/middleware/middleware.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: () => const Home(), middlewares: [MyMiddleware()]),
-  //GetPage(name: AppRoute.login, page: () => const Login()),
-  //GetPage(name: AppRoute.signup, page: () => const Signup()),
+  GetPage(name: "/", page: () => const Lang(), middlewares: [MyMiddleware()]),
+  GetPage(name: AppRoute.login, page: () => const Login()),
+  GetPage(name: AppRoute.signup, page: () => const Signup()),
   //GetPage(
   //name: AppRoute.frogetpassword,
   //page: () => const Forgetpassword(),
@@ -42,14 +48,14 @@ List<GetPage<dynamic>>? routes = [
   //name: AppRoute.successpage,
   //page: () => const Successpage(),
   //),
-  //GetPage(
-  // name: AppRoute.onboadring,
-  //page: () => const OnBoarding(),
-  //),
-  //GetPage(
-  //name: AppRoute.bottomNavigationBar,
-  //page: () => const Navr(),
-  //binding: BottomNavigationBinding()),
+  GetPage(
+    name: AppRoute.onboadring,
+    page: () => const OnBoarding(),
+  ),
+  GetPage(
+      name: AppRoute.bottomNavigationBar,
+      page: () => const Navr(),
+      binding: BottomNavigationBinding()),
   GetPage(
     name: AppRoute.homepage,
     page: () => const Home(),

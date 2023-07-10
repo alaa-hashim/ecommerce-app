@@ -9,10 +9,12 @@ abstract class SubcatController extends GetxController {
   inailData();
   changeCat(int val, catval);
   goTsub(String categoryId);
+  goBack();
   goTproduct(List category, int selectedCat, String categoryId);
 }
 
 class SubcatControllerImp extends SubcatController {
+  late String st;
   List category = [];
   int? selectedCat;
   List data = [];
@@ -29,6 +31,7 @@ class SubcatControllerImp extends SubcatController {
 
   @override
   inailData() {
+    st = '3';
     category = Get.arguments['category'];
     selectedCat = Get.arguments['selectedCat'];
     categoryId = Get.arguments['categoryId'];
@@ -48,7 +51,7 @@ class SubcatControllerImp extends SubcatController {
     statusrequst = StatusRequst.loading;
     update(); // Notify UI about the loading state
 
-    var response = await subdata.getData(categoryId);
+    var response = await subdata.getData(categoryId, st);
     statusrequst = hadlingData(response);
 
     if (statusrequst == StatusRequst.success) {
@@ -64,10 +67,15 @@ class SubcatControllerImp extends SubcatController {
 
   @override
   goTproduct(List category, int selectedCat, String categoryId) {
-    Get.offNamed(AppRoute.items, arguments: {
+    Get.toNamed(AppRoute.items, arguments: {
       "category": category,
       "selectedCat": selectedCat,
       "categoryId": categoryId,
     });
+  }
+
+  @override
+  goBack() {
+    Get.offNamed(AppRoute.homepage);
   }
 }

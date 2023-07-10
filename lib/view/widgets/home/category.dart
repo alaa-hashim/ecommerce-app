@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tech_app/linkapi.dart';
 import 'package:tech_app/model/catrgory.dart';
 
 import '../../../controller/homecontroller.dart';
@@ -56,10 +58,10 @@ class Categories extends GetView<HomeControllermpl> {
                 Container(
                   height: 70,
                   width: 100,
-                  decoration: BoxDecoration(
-                      color: AppColor.white,
-                      image: DecorationImage(
-                          image: NetworkImage("${category.categoryImage} "))),
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        "${AppLink.imagestCategories}/${category.categoryImage} ",
+                  ),
                 ),
                 Center(
                   child: Text(
