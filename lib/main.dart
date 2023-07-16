@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       translations: MyTranslation(),
-      locale: controller.languagne,
+      locale: controller.language,
       theme: controller.appTheme,
       getPages: routes,
       initialBinding: Inibindings(),

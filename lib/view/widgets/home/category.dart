@@ -55,7 +55,7 @@ class Categories extends GetView<HomeControllermpl> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   height: 70,
                   width: 100,
                   child: CachedNetworkImage(

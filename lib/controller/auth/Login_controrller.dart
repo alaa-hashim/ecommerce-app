@@ -21,6 +21,7 @@ class LoginControllerimp extends LoginController {
   late GlobalKey<FormState> formstate = GlobalKey<FormState>();
   late TextEditingController email;
   late TextEditingController password;
+  late String st;
   bool isshowpassword = true;
   Myservices myServices = Get.find();
   StatusRequst statusRequst = StatusRequst.none;
@@ -37,6 +38,7 @@ class LoginControllerimp extends LoginController {
 
   @override
   void onInit() {
+    st = '4';
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();
@@ -64,7 +66,7 @@ class LoginControllerimp extends LoginController {
     var formdata = formstate.currentState;
     if (formdata!.validate()) {
       StatusRequst statusRequst = StatusRequst.loading;
-      var respone = await logindata.postdata(email.text, password.text);
+      var respone = await logindata.postdata(email.text, password.text, st);
 
       update();
       statusRequst = hadlingData(respone);

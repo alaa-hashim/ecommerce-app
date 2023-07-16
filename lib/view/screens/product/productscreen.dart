@@ -46,6 +46,7 @@ class Productscreen extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           return Itemcard(
                             product: Product.fromJson(controller.data[index]),
+                            i: index,
                           );
                         }))),
           ),

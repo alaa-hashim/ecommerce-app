@@ -8,17 +8,17 @@ import '../data/datasource/remote/subcategory.dart';
 abstract class SubcatController extends GetxController {
   inailData();
   changeCat(int val, catval);
-  goTsub(String categoryId);
+  geTsub(String subId);
   goBack();
-  goTproduct(List category, int selectedCat, String categoryId);
+  goTproduct(List category, int selectedCat, String subId);
 }
 
 class SubcatControllerImp extends SubcatController {
   late String st;
-  List category = [];
+  List subcategory = [];
   int? selectedCat;
   List data = [];
-  String? categoryId;
+  String? subId;
 
   late StatusRequst statusrequst;
   SubData subdata = SubData(Get.find());
@@ -32,31 +32,32 @@ class SubcatControllerImp extends SubcatController {
   @override
   inailData() {
     st = '3';
-    category = Get.arguments['category'];
+    subcategory = Get.arguments['category'];
     selectedCat = Get.arguments['selectedCat'];
-    categoryId = Get.arguments['categoryId'];
-    goTsub(categoryId!);
+    subId = Get.arguments['categoryId'];
+    geTsub(subId!);
   }
 
   @override
   changeCat(val, catval) {
     selectedCat = val;
-    categoryId = catval;
-    goTsub(categoryId!);
+    subId = catval;
+    geTsub(subId!);
     update();
   }
 
   @override
-  goTsub(categoryId) async {
+  geTsub(subId) async {
+    data.clear();
     statusrequst = StatusRequst.loading;
-    update(); // Notify UI about the loading state
+    // Notify UI about the loading state
 
-    var response = await subdata.getData(categoryId, st);
+    var response = await subdata.getData(subId, st);
     statusrequst = hadlingData(response);
 
     if (statusrequst == StatusRequst.success) {
       if (response['status'] == "success") {
-        data.assignAll(response['data']); // Use assignAll to update the RxList
+        data.addAll(response['data']); // Use assignAll to update the RxList
       } else {
         statusrequst = StatusRequst.failure;
       }
@@ -66,16 +67,16 @@ class SubcatControllerImp extends SubcatController {
   }
 
   @override
-  goTproduct(List category, int selectedCat, String categoryId) {
+  goTproduct(List category, int selectedCat, String subId) {
     Get.toNamed(AppRoute.items, arguments: {
-      "category": category,
-      "selectedCat": selectedCat,
-      "categoryId": categoryId,
+      "subcat": category,
+      "selectedsub": selectedCat,
+      "subId": subId,
     });
   }
 
   @override
   goBack() {
-    Get.offNamed(AppRoute.homepage);
+    Get.offNamed(AppRoute.bottomNavigationBar);
   }
 }

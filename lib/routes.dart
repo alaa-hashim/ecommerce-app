@@ -66,7 +66,7 @@ List<GetPage<dynamic>>? routes = [
   ),
   GetPage(
     name: AppRoute.productdetail,
-    page: () => const Productdetial(),
+    page: () => Productdetial(),
   ),
   GetPage(
     name: AppRoute.subcategory,

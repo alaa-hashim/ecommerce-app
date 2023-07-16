@@ -25,11 +25,11 @@ class MyWidget extends GetView<SubcatControllerImp> {
             mainAxisSpacing: 0.10,
             childAspectRatio: 1.45,
           ),
-          itemCount: controller.category.length,
+          itemCount: controller.subcategory.length,
           itemBuilder: (context, i) {
             return Categories(
               i: i,
-              category: Category.fromJson(controller.category[i]),
+              category: Category.fromJson(controller.subcategory[i]),
             );
           }),
     );
@@ -46,7 +46,7 @@ class Categories extends GetView<SubcatControllerImp> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        controller.changeCat(i!, category.categoryId);
+        controller.changeCat(i!, category.categoryId!);
       },
       child: Center(
         child: GetBuilder<SubcatControllerImp>(

@@ -14,6 +14,11 @@ abstract class ProductController extends GetxController {
   getItems(String categoryid);
   goToPageProductDetails(Product prodUct);
   goBack();
+  recommend(
+    List category,
+    int selectedCat,
+    int categoryId,
+  );
 }
 
 class ProductControllerImp extends ProductController {
@@ -41,8 +46,8 @@ class ProductControllerImp extends ProductController {
   @override
   intialData() {
     //categories = Get.arguments['categories'];
-    selectedCat = Get.arguments['selectedcat'];
-    categoryId = Get.arguments['categoryId'];
+    selectedCat = Get.arguments['selectedsub'];
+    categoryId = Get.arguments['subId'];
     getItems(categoryId!);
   }
 
@@ -77,18 +82,29 @@ class ProductControllerImp extends ProductController {
 
   @override
   goToPageProductDetails(prodUct) {
-    Get.toNamed("productdetail", arguments: {"product": prodUct});
+    Get.toNamed(AppRoute.productdetail, arguments: {
+      "product": prodUct,
+    });
   }
 
   @override
   goBack() {
-    Get.offNamed(AppRoute.subcategory);
+    Get.toNamed(AppRoute.subcategory);
+  }
+
+  @override
+  recommend(
+    List category,
+    int selectedCat,
+    int categoryId,
+  ) {
+    Get.toNamed(AppRoute.productdetail, arguments: {
+      "category": category,
+      "selectedCat": selectedCat,
+      "categoryId": categoryId,
+    });
   }
 }
-
-
-
-
 
 
 

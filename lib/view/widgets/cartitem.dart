@@ -3,30 +3,26 @@
 //// ignore_for_file: must_be_immutable
 //* //
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../model/product.dart';
+import '../../controller/cartcontroller.dart';
 
 // ignore: must_be_immutable
 class CartItem extends StatelessWidget {
   // final CartController controller;
-  final Product product;
-  int quantity;
-  int index;
+  late int i;
 
   CartItem({
-    Key? key,
+    key,
     //  required this.controller,
-    required this.product,
-    required this.quantity,
-    required this.index,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // var controller = Get.put(CartController());
+    Cartcontroller controller = Get.put(Cartcontroller());
     return Dismissible(
-      key: ValueKey(product),
+      key: ValueKey(controller.data[i].productId),
       background: Container(
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.error,
@@ -75,9 +71,9 @@ class CartItem extends StatelessWidget {
                             // controller.addItem(product);
                           },
                         ),
-                        Text(
-                          '$quantity x',
-                          style: const TextStyle(color: Colors.white),
+                        const Text(
+                          ' x',
+                          style: TextStyle(color: Colors.white),
                         ),
                         IconButton(
                           icon: const Icon(Icons.remove),
@@ -118,7 +114,7 @@ class CartItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Total: \$${(product.price)}',
+                  'Total: \$${(controller.data[i].price)}',
                   style: GoogleFonts.lato(
                     fontWeight: FontWeight.w600,
                     color: const Color(0xff57636F),

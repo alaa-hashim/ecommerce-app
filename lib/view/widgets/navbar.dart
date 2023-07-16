@@ -14,6 +14,7 @@ import 'package:get/get.dart';
 
 import '../../controller/botttombarcontroller.dart';
 import '../../core/constant/color.dart';
+import '../screens/cart.dart';
 import '../screens/home.dart';
 
 class Navr extends GetView<BottomNavigationBarContorller> {
@@ -27,6 +28,7 @@ class Navr extends GetView<BottomNavigationBarContorller> {
           // ignore: prefer_const_literals_to_create_immutables
           body: IndexedStack(index: controller.tabIndex, children: [
             const Home(),
+            const CartScreen(),
             /* const Explore(),
             const Categroy(),
             const Cart(),

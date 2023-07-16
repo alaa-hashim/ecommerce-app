@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, must_be_immutable
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,9 @@ import '../../linkapi.dart';
 
 class Itemcard extends GetView<ProductControllerImp> {
   final Product product;
-  const Itemcard({Key? key, required this.product}) : super(key: key);
+  int? i;
+  Itemcard({Key? key, required this.i, required this.product})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,10 @@ class Itemcard extends GetView<ProductControllerImp> {
         tag: product.productId!,
         child: Container(
           child: InkWell(
-            onTap: () => controller.goToPageProductDetails(product),
+            onTap: () {
+              controller.goToPageProductDetails(product);
+              controller.recommend(controller.data, i!, product.productId!);
+            },
             child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
@@ -36,7 +41,7 @@ class Itemcard extends GetView<ProductControllerImp> {
                           Padding(
                             padding: const EdgeInsets.all(18.0),
                             child: Center(
-                              child: Container(
+                              child: SizedBox(
                                 height: 125,
                                 width: 115,
                                 child: CachedNetworkImage(
