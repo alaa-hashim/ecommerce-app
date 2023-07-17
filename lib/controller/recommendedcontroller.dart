@@ -18,7 +18,7 @@ abstract class Recommendedcontroller extends GetxController {
 class Recommendedcontrollermpl extends Recommendedcontroller {
   String? itemId;
   late String st;
-  int? selectedCat;
+  late String selectedCat;
 
   ItemsData testData = ItemsData(Get.find());
 
@@ -32,7 +32,7 @@ class Recommendedcontrollermpl extends Recommendedcontroller {
   void onInit() {
     // search = TextEditingController();
     intialData();
-    st = '6';
+    st = '30';
     super.onInit();
   }
 
@@ -47,7 +47,7 @@ class Recommendedcontrollermpl extends Recommendedcontroller {
   getItems(itemId) async {
     data.clear();
     statusrequst = StatusRequst.loading;
-    var response = await testData.getRecommned(itemId, st);
+    var response = await testData.getRecommned(itemId, st, selectedCat);
     print("=============================== Controller $response ");
     statusrequst = handlingData(response);
     if (StatusRequst.success == statusrequst) {

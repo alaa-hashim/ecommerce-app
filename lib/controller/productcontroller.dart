@@ -6,6 +6,7 @@ import 'package:tech_app/model/product.dart';
 import '../core/class/handledata.dart';
 import '../core/class/satusrequst.dart';
 import '../core/constant/routes.dart';
+import '../core/services/services.dart';
 import '../data/datasource/remote/items.dart';
 
 abstract class ProductController extends GetxController {
@@ -27,6 +28,7 @@ class ProductControllerImp extends ProductController {
   late String st;
   int? selectedCat;
 
+  Myservices myservices = Get.put(Myservices());
   ItemsData testData = ItemsData(Get.find());
 
   List data = [];
@@ -39,12 +41,13 @@ class ProductControllerImp extends ProductController {
   void onInit() {
     // search = TextEditingController();
     intialData();
-    st = '2';
+    st = '10';
     super.onInit();
   }
 
   @override
   intialData() {
+    st = '10';
     //categories = Get.arguments['categories'];
     selectedCat = Get.arguments['selectedsub'];
     categoryId = Get.arguments['subId'];
@@ -64,8 +67,7 @@ class ProductControllerImp extends ProductController {
     data.clear();
     statusrequst = StatusRequst.loading;
     var response = await testData.getData(
-      categoryId,
-    );
+        categoryId, st, myservices.sharedpreferences.getString("id")!);
     print("=============================== Controller $response ");
     statusrequst = handlingData(response);
     if (StatusRequst.success == statusrequst) {

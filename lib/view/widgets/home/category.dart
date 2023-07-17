@@ -6,6 +6,7 @@ import 'package:tech_app/model/catrgory.dart';
 
 import '../../../controller/homecontroller.dart';
 import '../../../core/constant/color.dart';
+import '../../../core/localization/translatedatabase.dart';
 
 class CategoryHome extends GetView<HomeControllermpl> {
   const CategoryHome({Key? key}) : super(key: key);
@@ -65,7 +66,8 @@ class Categories extends GetView<HomeControllermpl> {
                 ),
                 Center(
                   child: Text(
-                    "${category.categoryName}",
+                    translateDatabase(
+                        category.categoryNameAr, category.categoryName),
                     style: const TextStyle(fontSize: 13, color: AppColor.black),
                   ),
                 )

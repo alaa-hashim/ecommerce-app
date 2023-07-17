@@ -57,7 +57,9 @@ class SubcatControllerImp extends SubcatController {
 
     if (statusrequst == StatusRequst.success) {
       if (response['status'] == "success") {
-        data.addAll(response['data']); // Use assignAll to update the RxList
+        data.addAll(response['data']);
+
+        // Use assignAll to update the RxList
       } else {
         statusrequst = StatusRequst.failure;
       }

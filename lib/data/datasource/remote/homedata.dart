@@ -11,4 +11,10 @@ class Homedata {
     var respone = await apihandler.postData(AppLink.homepage, {"st": st});
     return respone.fold((l) => l, (r) => r);
   }
+
+  getData(String ts, String id) async {
+    var respone =
+        await apihandler.postData(AppLink.homepage, {"st": ts, "userid": id});
+    return respone.fold((l) => l, (r) => r);
+  }
 }

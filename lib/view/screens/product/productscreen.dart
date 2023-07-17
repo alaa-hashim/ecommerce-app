@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tech_app/controller/productcontroller.dart';
+import 'package:tech_app/controller/wishlistcontroller.dart';
 import 'package:tech_app/core/class/handlindatview.dart';
 
 import '../../../model/product.dart';
@@ -14,6 +15,7 @@ class Productscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProductControllerImp controller = Get.put(ProductControllerImp());
+    WishlistController controllerWish = Get.put(WishlistController());
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -44,6 +46,8 @@ class Productscreen extends StatelessWidget {
                         ),
                         itemCount: controller.data.length,
                         itemBuilder: (BuildContext context, int index) {
+                          controllerWish.isWished[controller.data[index]
+                              ['product_id']] = controller.data[index]['wish'];
                           return Itemcard(
                             product: Product.fromJson(controller.data[index]),
                             i: index,

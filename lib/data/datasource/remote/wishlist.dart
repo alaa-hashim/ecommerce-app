@@ -1,9 +1,9 @@
 import '../../../core/class/apihandler.dart';
 import '../../../linkapi.dart';
 
-class ItemsData {
+class WishData {
   ApiHandler apihandler;
-  ItemsData(this.apihandler);
+  WishData(this.apihandler);
   getData(String id, String st, String userid) async {
     var respone = await apihandler
         .postData(AppLink.homepage, {"id": id, "st": st, "userid": userid});

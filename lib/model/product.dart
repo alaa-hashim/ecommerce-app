@@ -17,27 +17,27 @@ class Product {
   String? subcatNamear;
   String? image;
   int? catId;
-
-  Product({
-    this.productId,
-    this.productName,
-    this.proudctNamear,
-    this.price,
-    this.detail,
-    this.detailsAr,
-    this.proudctImg,
-    this.subcatId,
-    this.count,
-    this.date,
-    this.hide,
-    this.productDiscount,
-    this.proudctActive,
-    this.subId,
-    this.subcatName,
-    this.subcatNamear,
-    this.image,
-    this.catId,
-  });
+  int? wish;
+  Product(
+      {this.productId,
+      this.productName,
+      this.proudctNamear,
+      this.price,
+      this.detail,
+      this.detailsAr,
+      this.proudctImg,
+      this.subcatId,
+      this.count,
+      this.date,
+      this.hide,
+      this.productDiscount,
+      this.proudctActive,
+      this.subId,
+      this.subcatName,
+      this.subcatNamear,
+      this.image,
+      this.catId,
+      this.wish});
 
   Product.fromJson(Map<String, dynamic> json) {
     productId = json['product_id'];
@@ -59,6 +59,7 @@ class Product {
     image = json['image'];
     catId = json['cat_id'];
     hide = json['hide_'];
+    wish = json['wish'];
   }
 
   Map<String, dynamic> toJson() {
@@ -82,6 +83,8 @@ class Product {
     data['image'] = image;
     data['cat_id'] = catId;
     data['hide_'] = hide;
+    data['wishlist'] = wish;
+
     return data;
   }
 }

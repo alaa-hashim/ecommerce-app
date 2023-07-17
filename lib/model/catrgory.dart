@@ -17,7 +17,7 @@ class Category {
   Category.fromJson(Map<String, dynamic> json) {
     categoryId = json['category_id']?.toString();
     categoryName = json['category_name'];
-    categoryNameAr = json['category_name_ar'];
+    categoryNameAr = json['category_namear'];
     categoryImage = json['img'];
     catDate = json['cat_date'];
   }
@@ -26,7 +26,7 @@ class Category {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['category_id'] = categoryId;
     data['category_name'] = categoryName;
-    data['category_name_ar'] = categoryNameAr;
+    data['category_namear'] = categoryNameAr;
     data['img'] = categoryImage;
     data['cat_date'] = catDate;
     return data;
