@@ -64,7 +64,7 @@ class Product {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['product_id'] = productId;
+    data['product_id'] = productId.toString();
     data['product_name'] = productName;
     data['proudct_namear'] = proudctNamear;
     data['price'] = price;

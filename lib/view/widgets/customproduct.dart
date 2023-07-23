@@ -89,9 +89,13 @@ class Itemcard extends GetView<ProductControllerImp> {
                                         if (controller
                                                 .isWished[product.productId] ==
                                             "1") {
+                                          controller
+                                              .deletewish(product.productId!);
                                           controller.setWished(
                                               product.productId, "0");
                                         } else {
+                                          controller
+                                              .addwish(product.productId!);
                                           controller.setWished(
                                               product.productId, "1");
                                         }

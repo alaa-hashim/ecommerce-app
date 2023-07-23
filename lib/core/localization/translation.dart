@@ -43,7 +43,8 @@ class MyTranslation extends Translations {
           "35": "الكلمة الجديدة",
           "36": "تم اعادة تعيين كلمة المرور بنجاح",
           "37": "تهانينا",
-          "38": "تم التسجيل بنجاح"
+          "38": "تم التسجيل بنجاح",
+          "39": "تم اضافة المنتج الي المفضلة"
         },
         "en": {
           "1": "Choose Language",
@@ -87,7 +88,8 @@ class MyTranslation extends Translations {
           "35": "New Password",
           "36": "Password has been reset successfully",
           "37": "congratulations",
-          "38": "successfully registered"
+          "38": "successfully registered",
+          "39": "Product added to wish list",
         }
       };
 }

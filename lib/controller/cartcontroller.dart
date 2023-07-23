@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:get/get.dart';
+import 'dart:convert';
 
 import '../core/class/handledata.dart';
 import '../core/class/satusrequst.dart';
@@ -19,7 +20,7 @@ class Cartcontroller extends GetxController {
   @override
   void onInit() {
     st = '6';
-    // view();
+    view();
     super.onInit();
   }
 
@@ -32,11 +33,11 @@ class Cartcontroller extends GetxController {
       if (response['status'] == "success") {
         if (response['data']['status'] == 'success') {
           List dataresponse = response['data'];
-          //  Map dataresponsecountprice = response['countprice'];
+          Map dataresponsecountprice = response['countprice'];
           data.clear();
           data.addAll(dataresponse.map((e) => Cart.fromJson(e)));
-          //  cartcount = int.parse(dataresponsecountprice['totalcount']);
-          // cartPrice = double.parse(dataresponsecountprice['totalprice']);
+          cartcount = int.parse(dataresponsecountprice['totalcount']);
+          cartPrice = double.parse(dataresponsecountprice['totalprice']);
           print(cartPrice);
         }
       } else {
